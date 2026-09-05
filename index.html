@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arcadia Livre — jogos grátis</title>
+  <meta name="description" content="Jogos próprios, leves e gratuitos para celular e PC.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top"><a class="logo" href="#inicio">✦ ARCADIA <span>LIVRE</span></a><nav><a href="#jogos">Jogos</a><a href="#flash">Flash clássico</a><a href="#sobre">Sobre</a></nav><a class="pill" href="#jogos">Jogar agora</a></header>
+  <main>
+    <section class="hero" id="inicio"><div><p class="eyebrow">portal independente · 100% grátis</p><h1>Seu próximo jogo<br><em>começa aqui.</em></h1><p class="lead">Mini-jogos originais, rápidos e feitos para funcionar no celular e no PC. Sem cadastro e sem download.</p><a class="btn primary" href="#jogos">Escolher jogo ↓</a></div><div class="hero-orb"><div class="orb-card"><span>ARCADIA</span><strong>PLAY<br><b>NOW</b></strong><small>HTML5 · MOBILE · PC</small></div></div></section>
+    <div class="ad-slot">ESPAÇO PARA ANÚNCIO</div>
+    <section id="jogos"><div class="heading"><div><p class="eyebrow">catálogo próprio</p><h2>Jogue no navegador</h2></div><p class="muted">Escolha uma carta e comece em segundos.</p></div><div class="cards"><button class="game-card cyan" data-game="click"><span class="emoji">⚡</span><span class="tag">reflexo</span><strong>Click Rush</strong><small>Faça o maior número de pontos em 20 segundos.</small><span class="go">JOGAR →</span></button><button class="game-card pink" data-game="memory"><span class="emoji">🧠</span><span class="tag">memória</span><strong>Virada Rápida</strong><small>Encontre os pares antes do tempo acabar.</small><span class="go">JOGAR →</span></button><button class="game-card lime" data-game="snake"><span class="emoji">🐍</span><span class="tag">arcade</span><strong>Pixel Snake</strong><small>Colete pontos e não encoste nas paredes.</small><span class="go">JOGAR →</span></button></div></section>
+    <section class="player-section" aria-live="polite"><div class="player-head"><div><p class="eyebrow">sala de jogos</p><h2 id="game-title">Escolha um jogo acima</h2></div><button class="btn ghost" id="close-game" hidden>Fechar</button></div><div id="game-root" class="game-root"><div class="empty-state"><span>🎮</span><p>Seu jogo abre aqui.<br><small>Toque em uma das cartas para começar.</small></p></div></div></section>
+    <section id="flash" class="info-grid"><div class="info-card"><p class="eyebrow">preservação</p><h2>Flash clássico, do jeito certo.</h2><p>O Flash original foi descontinuado. Vamos usar o <strong>Ruffle</strong>, um emulador moderno baseado em WebAssembly, apenas com jogos próprios ou arquivos com licença de redistribuição.</p><a class="text-link" href="https://ruffle.rs/">Conhecer o Ruffle ↗</a></div><div class="info-card"><p class="eyebrow">monetização</p><h2>Espaço para crescer.</h2><p>O projeto terá áreas reservadas para anúncios, mas a exibição depende de aprovação da rede de publicidade, conteúdo legalizado e volume de visitantes.</p><span class="status">● base pronta para anúncios</span></div></section>
+    <section id="sobre" class="about"><p class="eyebrow">sobre o projeto</p><h2>Leve, rápido e independente.</h2><p>O Arcadia Livre está sendo construído com jogos originais em HTML5, sem contas obrigatórias e com foco em aparelhos simples. A ideia é crescer por etapas: mais jogos, ranking local, favoritos e uma área de jogos Flash preservados legalmente.</p></section>
+  </main>
+  <footer><span>© 2026 Arcadia Livre</span><span>Feito para jogar em qualquer tela.</span></footer>
+  <script src="game.js"></script>
+</body>
+</html>
