@@ -5,3 +5,13 @@ button:focus-visible,a:focus-visible,input:focus-visible,[tabindex]:focus-visibl
 .tap-target:focus-visible{box-shadow:0 0 0 7px var(--bg),0 0 0 11px var(--cyan),0 16px 45px #55e6ff55}
 .memory-card.flipped{transform:translateY(-2px);transition:transform .14s,background .14s,border-color .14s}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* HUD compacto e legível em telas pequenas */
+.game-ui>p{display:inline-flex;align-items:center;justify-content:center;gap:4px;max-width:100%;padding:8px 13px;border:1px solid #ffffff14;border-radius:999px;background:#0b1428b8;box-shadow:inset 0 1px #ffffff0b;color:#c4cee6;font-size:.78rem;line-height:1.35}
+.game-ui h3{letter-spacing:-.025em}
+.game-root{box-shadow:inset 0 1px #ffffff08,0 20px 55px #0003}
+.game-ui canvas{box-shadow:0 12px 30px #0005}
+.tap-target{transition:filter .15s,box-shadow .15s,transform .15s}
+.tap-target:hover{filter:saturate(1.18) brightness(1.08)}
+.memory-card:hover{border-color:#55e6ff99;background:#20335b}
+@media(max-width:560px){.game-ui>p{font-size:.72rem;padding:7px 10px}.game-root{padding:18px 12px}}
