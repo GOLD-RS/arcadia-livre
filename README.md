@@ -19,6 +19,20 @@ Os seis jogos e a interface foram desenvolvidos para este projeto. Não há arqu
 
 Ruffle só poderá ser adicionado junto com conteúdo próprio ou com licença de redistribuição comprovável, incluindo autoria, fonte, licença, atribuição e autorização de distribuição. A licença do Ruffle também deverá ser respeitada.
 
+## Experiência e QA
+
+- Seis páginas individuais, com controles de toque, mouse e/ou teclado.
+- Recordes e favoritos ficam somente no navegador, via `localStorage`.
+- Partidas pausam quando a aba fica em segundo plano.
+- HUD responsivo, foco visível e suporte a `prefers-reduced-motion`.
+- Fluxo manual de início nos jogos que usam temporizadores ou movimento.
+- Testes manuais publicados: carregamento das seis rotas, início, interação, fim, reinício e persistência local.
+
+## Licença
+
+O código próprio deste projeto está sob a licença MIT, no arquivo `LICENSE`.
+A licença do código não concede direitos sobre eventuais conteúdos externos. No estado atual, não há SWF nem jogos de terceiros incluídos.
+
 ## Publicação
 
 A publicação usa a branch `main` e a raiz do repositório no GitHub Pages. Antes de adicionar conteúdo externo, verificar a licença e registrar a procedência no projeto.
