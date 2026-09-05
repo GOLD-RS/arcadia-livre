@@ -1,0 +1,10 @@
+{
+  "name": "Arcadia Livre",
+  "short_name": "Arcadia",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080c19",
+  "theme_color": "#0a1022",
+  "description": "Jogos HTML5 leves, próprios e gratuitos para celular e PC."
+}

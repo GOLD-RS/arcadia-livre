@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gold-rs.github.io/arcadia-livre/sitemap.xml
