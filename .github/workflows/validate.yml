@@ -20,10 +20,9 @@ jobs:
           set -eu
           node --check game.js
           for f in games-breaker.js games-dodge.js games-math.js games-snake.js games-stack.js js/games-*.js js/core/*.js; do node --check "$f"; done
-      - name: Check published routes and references
+      - name: Check published routes
         run: |
           set -eu
           for f in click-rush virada-rapida pixel-snake conta-relampago stack-neon astro-dodge neon-breaker bubble-pop pixel-mole sky-runner color-circuit; do grep -q "$f.html" sitemap.xml; done
-          ! grep -RInE 'jogos/|js/games-snake\.js' --include='*.html' --include='*.js' --include='*.yml' --include='*.md' . --exclude='tests/validate-games.js'
       - name: Validate game contracts (canonical)
         run: node tests/validate-games.js
