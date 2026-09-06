@@ -21,5 +21,6 @@ for(const f of Object.values(classic)) if(!fs.existsSync(root+'/'+f)) throw new 
 for(const helper of ['storage','registry','lifecycle']) if(!fs.existsSync(root+'/js/core/'+helper+'.js')) throw new Error(`Core ausente: ${helper}`);
 if(!game.includes('lifecycle?.destroy()')||!game.includes('lifecycle?.start()')||!game.includes('lifecycle?.pause()')) throw new Error('Host sem lifecycle real');
 for(const f of Object.values(classic)){const src=fs.readFileSync(root+'/'+f,'utf8');if(src.includes('pagePaused=false')) throw new Error(`${f}: pagePaused fixo`);if(!src.includes('lifecycle')) throw new Error(`${f}: sem lifecycle`);if(src.includes('setCleanup')) throw new Error(`${f}: usa setCleanup legado`)}
+const clickModule=fs.readFileSync(root+'/games-click.js','utf8');if(!clickModule.includes('registerCleanup(')) throw new Error('games-click.js: sem limpeza registrada no lifecycle');for(const resource of ['cancelAnimationFrame','clearTimeout','removeEventListener']) if(!clickModule.includes(resource)) throw new Error(`games-click.js: limpeza ausente para ${resource}`);
 if(!fs.readFileSync(root+'/games-runner.js','utf8').includes('elapsed')) throw new Error('Sky Runner sem pontuação temporal');
 console.log(`OK: ${Object.keys(expected).length} jogos, módulos específicos, lifecycle e arquitetura modular verificados.`);
