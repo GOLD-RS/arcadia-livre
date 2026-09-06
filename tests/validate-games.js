@@ -28,7 +28,7 @@ const storageMethods=new Set([...storageSource.matchAll(/(?:function\s+|[,{]\s*)
 for(const f of [...new Set(Object.values(classic))]){
  const src=fs.readFileSync(root+'/'+f,'utf8');
  if(/\blocalStorage\s*\./.test(src)) throw new Error(`${f}: acesso direto ao localStorage; use ArcadiaStorage`);
- for(const m of src.matchAll(/(?:window\.)?ArcadiaStorage\??\.([A-Za-z_$][\w$]*)\s*\(/g){
+ for(const m of src.matchAll(/(?:window\.)?ArcadiaStorage\??\.([A-Za-z_$][\w$]*)\s*\(/g)){
   if(!storageMethods.has(m[1])) throw new Error(`${f}: ArcadiaStorage.${m[1]} não existe em js/core/storage.js`);
  }
  if(/cellHandlers\.push/.test(src) && !/cellHandlers\s*=/.test(src)) throw new Error(`${f}: cellHandlers usado sem declaração`);
