@@ -3,7 +3,7 @@ const fs=require('fs');
 const path=require('path');
 const root=path.resolve(__dirname,'..');
 const expected={click:'click-rush.html',memory:'virada-rapida.html',snake:'pixel-snake.html',math:'conta-relampago.html',stack:'stack-neon.html',dodge:'astro-dodge.html',breaker:'neon-breaker.html',pop:'bubble-pop.html',mole:'pixel-mole.html',runner:'sky-runner.html',color:'color-circuit.html'};
-const modules={click:'js/games-click.js',memory:'js/games-memory.js',snake:'games-snake.js',math:'games-math.js',stack:'games-stack.js',dodge:'games-dodge.js',breaker:'games-breaker.js',pop:'js/games-pop.js',mole:'js/games-mole.js',runner:'js/games-runner.js',color:'js/games-color.js'};
+const modules={click:'js/games-click.js',memory:'js/games-memory.js',snake:'js/games-snake.js',math:'js/games-math.js',stack:'js/games-stack.js',dodge:'js/games-dodge.js',breaker:'js/games-breaker.js',pop:'js/games-pop.js',mole:'js/games-mole.js',runner:'js/games-runner.js',color:'js/games-color.js'};
 const core=['js/core/storage.js','js/core/registry.js','js/core/lifecycle.js','game.js'];
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const fail=msg=>{throw new Error(msg)};
@@ -19,7 +19,7 @@ for(const [key,page] of Object.entries(expected)){
   const html=read(page);
   for(const src of core) if(!html.includes(src)) fail(`${page}: módulo ausente ${src}`);
   if(!html.includes(modules[key])) fail(`${page}: módulo oficial ausente ${modules[key]}`);
-  if(html.includes('jogos/')||html.includes('js/games-snake.js')) fail(`${page}: referência a caminho legado/duplicado`);
+  if(html.includes('jogos/')) fail(`${page}: referência a caminho legado/duplicado`);
   if(!registry.includes(`'${key}'`)) fail(`Registro ausente: ${key}`);
 }
 for(const f of [...Object.values(modules),...core]) if(!fs.existsSync(path.join(root,f))) fail(`Arquivo canônico ausente: ${f}`);
@@ -35,5 +35,5 @@ for(const f of Object.values(modules)){
 const storage=read('js/core/storage.js');
 for(const method of ['get','set','remove','preferences','setPreference','favorites','records','saveRecord']) if(!storage.includes(method)) fail(`ArcadiaStorage sem ${method}`);
 if(!storage.includes('localStorage')) fail('ArcadiaStorage não acessa localStorage');
-if(!read('games-dodge.js').includes('dt/16.67')||!read('games-breaker.js').includes('dt/16.67')||!read('games-stack.js').includes('dt/16.67')||!read('js/games-runner.js').includes('dt/16.67')) fail('Módulo temporal sem atualização baseada em delta');
+if(!read('js/games-dodge.js').includes('dt/16.67')||!read('js/games-breaker.js').includes('dt/16.67')||!read('js/games-stack.js').includes('dt/16.67')||!read('js/games-runner.js').includes('dt/16.67')) fail('Módulo temporal sem atualização baseada em delta');
 console.log(`OK: ${Object.keys(expected).length} jogos, somente módulos canônicos, lifecycle, storage e referências verificadas.`);
