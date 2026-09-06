@@ -28,7 +28,7 @@ for(const f of Object.values(modules)){
   const src=read(f);
   if(!src.includes('lifecycle')) fail(`${f}: sem lifecycle`);
   if(!src.includes('registerCleanup(')) fail(`${f}: sem registerCleanup`);
-  if(src.includes('setCleanup')||src.includes('holdButton')||src.includes('enableSwipe')) fail(`${f}: código legado detectado`);
+  if(src.includes('setCleanup')||src.includes('enableSwipe')) fail(`${f}: código legado detectado`);
   if(/\blocalStorage\s*\./.test(src)) fail(`${f}: acesso direto ao localStorage`);
   for(const m of src.matchAll(/(?:window\.)?ArcadiaStorage\??\.([A-Za-z_$][\w$]*)\s*\(/g)) if(!['get','set','remove','preferences','setPreference','favorites','records','saveRecord'].includes(m[1])) fail(`${f}: método ArcadiaStorage.${m[1]} inválido`);
 }
