@@ -12,7 +12,7 @@ for(const [key,page] of Object.entries(expected)){
  if(!registry.includes(`['${key}'`)) throw new Error(`Registro ausente: ${key}`);
  if(classic[key]){
   if(!html.includes(classic[key])) throw new Error(`${page}: módulo específico ausente ${classic[key]}`);
-  if(['games-pop.js','games-mole.js','games-color.js','games-runner.js'].some(x=>x!==classic[key]&&html.includes(x))) throw new Error(`${page}: módulo clássico indevido`);
+  if(['js/games-pop.js','js/games-mole.js','js/games-color.js','js/games-runner.js'].some(x=>x!==classic[key]&&html.includes(x))) throw new Error(`${page}: módulo clássico indevido`);
   const legacyTitle={click:"title.textContent='Click Rush'",memory:"title.textContent='Virada Rápida'",snake:"title.textContent='Pixel Snake'",math:"title.textContent='Conta Relâmpago'",stack:"title.textContent='Stack Neon'",dodge:"title.textContent='Astro Dodge'",breaker:"title.textContent='Neon Breaker'",pop:"title.textContent='Bubble Pop'",mole:"title.textContent='Pixel Mole'",color:"title.textContent='Color Circuit'",runner:"title.textContent='Sky Runner'"}[key];
   if(legacyTitle && game.includes(legacyTitle)) throw new Error(`${page}: implementação clássica voltou ao game.js`);
  }
