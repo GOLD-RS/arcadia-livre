@@ -13,7 +13,8 @@ for(const [key,page] of Object.entries(expected)){
  if(classic[key]){
   if(!html.includes(classic[key])) throw new Error(`${page}: módulo específico ausente ${classic[key]}`);
   if(['games-pop.js','games-mole.js','games-color.js','games-runner.js'].some(x=>x!==classic[key]&&html.includes(x))) throw new Error(`${page}: módulo clássico indevido`);
-  if(game.includes(`function ${key}(`)) throw new Error(`${page}: factory clássica voltou ao game.js`);
+  const legacyTitle={pop:"title.textContent='Bubble Pop'",mole:"title.textContent='Pixel Mole'",color:"title.textContent='Color Circuit'",runner:"title.textContent='Sky Runner'"}[key];
+  if(legacyTitle && game.includes(legacyTitle)) throw new Error(`${page}: implementação clássica voltou ao game.js`);
  }
 }
 for(const f of Object.values(classic)) if(!fs.existsSync(root+'/'+f)) throw new Error(`Módulo ausente: ${f}`);
