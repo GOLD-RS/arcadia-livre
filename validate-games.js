@@ -2,7 +2,7 @@
 const fs=require('fs');
 const root=__dirname;
 const expected={click:'click-rush.html',memory:'virada-rapida.html',snake:'pixel-snake.html',math:'conta-relampago.html',stack:'stack-neon.html',dodge:'astro-dodge.html',breaker:'neon-breaker.html',pop:'bubble-pop.html',mole:'pixel-mole.html',runner:'sky-runner.html',color:'color-circuit.html'};
-const classic={pop:'games-pop.js',mole:'games-mole.js',color:'games-color.js',runner:'games-runner.js'};
+const classic={click:'games-click.js',pop:'games-pop.js',mole:'games-mole.js',color:'games-color.js',runner:'games-runner.js'};
 const registry=fs.readFileSync(root+'/js/core/registry.js','utf8');
 const game=fs.readFileSync(root+'/game.js','utf8');
 for(const [key,page] of Object.entries(expected)){
@@ -13,7 +13,7 @@ for(const [key,page] of Object.entries(expected)){
  if(classic[key]){
   if(!html.includes(classic[key])) throw new Error(`${page}: módulo específico ausente ${classic[key]}`);
   if(['games-pop.js','games-mole.js','games-color.js','games-runner.js'].some(x=>x!==classic[key]&&html.includes(x))) throw new Error(`${page}: módulo clássico indevido`);
-  const legacyTitle={pop:"title.textContent='Bubble Pop'",mole:"title.textContent='Pixel Mole'",color:"title.textContent='Color Circuit'",runner:"title.textContent='Sky Runner'"}[key];
+  const legacyTitle={click:"title.textContent='Click Rush'",pop:"title.textContent='Bubble Pop'",mole:"title.textContent='Pixel Mole'",color:"title.textContent='Color Circuit'",runner:"title.textContent='Sky Runner'"}[key];
   if(legacyTitle && game.includes(legacyTitle)) throw new Error(`${page}: implementação clássica voltou ao game.js`);
  }
 }
