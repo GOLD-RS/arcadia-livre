@@ -1,6 +1,6 @@
 /* Structural smoke test for the static portal. Full interaction is exercised in the browser QA pass. */
 const fs=require('fs');
-const root=__dirname+'/..';
+const root=__dirname;
 const expected=[['click','click-rush.html'],['memory','virada-rapida.html'],['snake','pixel-snake.html'],['math','conta-relampago.html'],['stack','stack-neon.html'],['dodge','astro-dodge.html'],['breaker','neon-breaker.html'],['pop','bubble-pop.html'],['mole','pixel-mole.html'],['runner','sky-runner.html'],['color','color-circuit.html']];
 const registry=fs.readFileSync(root+'/js/core/registry.js','utf8');
 const game=fs.readFileSync(root+'/game.js','utf8');
