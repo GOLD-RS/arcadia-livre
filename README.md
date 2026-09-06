@@ -12,7 +12,7 @@ A raiz deste diretório é a fonte canônica do site publicado no GitHub Pages:
 - `click-rush.html`, `virada-rapida.html`, `pixel-snake.html`, `conta-relampago.html`, `stack-neon.html`, `astro-dodge.html` — jogos principais
 - `neon-breaker.html`, `bubble-pop.html`, `pixel-mole.html`, `sky-runner.html`, `color-circuit.html` — clássicos próprios inspirados na era Flash
 
-Os arquivos dentro de `jogos/` são cópias antigas de trabalho e não devem ser publicados separadamente.
+Não há uma segunda árvore de páginas ou módulos: a raiz e `js/` contêm somente os arquivos canônicos referenciados pelo catálogo. O validador oficial fica em `tests/validate-games.js`.
 
 ## Direitos e conteúdo
 
