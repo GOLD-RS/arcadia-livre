@@ -5,6 +5,8 @@ const expected=[['click','click-rush.html'],['memory','virada-rapida.html'],['sn
 const registry=fs.readFileSync(root+'/js/core/registry.js','utf8');
 const game=fs.readFileSync(root+'/game.js','utf8');
 const migrated={pop:'js/games-pop.js',mole:'js/games-mole.js',runner:'js/games-runner.js',color:'js/games-color.js'};
+const classic={click:'js/games-click.js',memory:'js/games-memory.js',snake:'games-snake.js',math:'games-math.js',stack:'games-stack.js',dodge:'games-dodge.js',breaker:'games-breaker.js',pop:'js/games-pop.js',mole:'js/games-mole.js',color:'js/games-color.js',runner:'js/games-runner.js'};
+
 for(const [key,page] of expected){
  if(!fs.existsSync(root+'/'+page)) throw new Error(`Página ausente: ${page}`);
  const html=fs.readFileSync(root+'/'+page,'utf8');
@@ -20,7 +22,7 @@ const storageMethods=new Set([...storageSource.matchAll(/(?:function\s+|[,{]\s*)
 for(const f of [...new Set(Object.values(classic))]){
  const src=fs.readFileSync(root+'/'+f,'utf8');
  if(/\blocalStorage\s*\./.test(src)) throw new Error(`${f}: acesso direto ao localStorage; use ArcadiaStorage`);
- for(const m of src.matchAll(/(?:window\.)?ArcadiaStorage\??\.([A-Za-z_$][\w$]*)\s*\(/g){
+ for(const m of src.matchAll(/(?:window\.)?ArcadiaStorage\??\.([A-Za-z_$][\w$]*)\s*\(/g)){
   if(!storageMethods.has(m[1])) throw new Error(`${f}: ArcadiaStorage.${m[1]} não existe em js/core/storage.js`);
  }
  if(/cellHandlers\.push/.test(src) && !/cellHandlers\s*=/.test(src)) throw new Error(`${f}: cellHandlers usado sem declaração`);
