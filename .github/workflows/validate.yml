@@ -13,8 +13,11 @@ jobs:
         run: |
           set -eu
           for f in index.html game.js styles.css sitemap.xml README.md click-rush.html virada-rapida.html pixel-snake.html conta-relampago.html stack-neon.html astro-dodge.html neon-breaker.html bubble-pop.html pixel-mole.html sky-runner.html color-circuit.html; do test -f "$f"; done
+          for f in games-pop.js games-mole.js games-color.js games-runner.js; do test -f "$f"; done
       - name: Parse JavaScript
-        run: node --check game.js
+        run: |
+          node --check game.js
+          for f in games-*.js js/core/*.js; do node --check "$f"; done
       - name: Check sitemap routes
         run: |
           for f in click-rush virada-rapida pixel-snake conta-relampago stack-neon astro-dodge neon-breaker bubble-pop pixel-mole sky-runner color-circuit; do grep -q "$f.html" sitemap.xml; done
